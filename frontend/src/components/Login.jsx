@@ -1,22 +1,69 @@
 // App.js
 import React, { useState } from "react";
-import LoginPageVector2 from "../assets/LoginPageVector2.jpg";
 import LoginPageBg from "../assets/LoginPageBg.jpg";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { API_END_POINT } from "../utils/contant";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [isLogin, setIsLogin] = useState(true);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const loginHandler = () => {
     setIsLogin((prevLogin) => !prevLogin);
   };
 
-  const getInputData = (e) => {
+  const getInputData = async (e) => {
     e.preventDefault();
-    console.log(fullName, email, password);
+
+    if (isLogin) {
+      const user = { email, password };
+      try {
+        const res = await axios.post(`${API_END_POINT}/login`, user, {
+          headers: {
+            "content-type": "application/json",
+          },
+          withCredentials: true,
+        });
+        console.log(res);
+        if (res.data.success) {
+          toast.success(res.data.message);
+        }
+        navigate("/discover");
+      } catch (error) {
+        console.error(error);
+        const errorMessage =
+          error.response?.data?.message || "Something went wrong!";
+        toast.error(errorMessage);
+      }
+    } else {
+      //register
+      const user = { fullName, email, password };
+      try {
+        const res = await axios.post(`${API_END_POINT}/register`, user, {
+          headers: {
+            "content-type": "application/json",
+          },
+          withCredentials: true,
+        });
+        console.log(res);
+        if (res.data.success) {
+          toast.success(res.data.message);
+        }
+        setIsLogin(true);
+      } catch (error) {
+        console.log(error);
+        toast.error(error.response.data.message);
+      }
+    }
+
+    setFullName("");
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -33,26 +80,32 @@ function Login() {
           <form action="" class="flex flex-col gap-4" onSubmit={getInputData}>
             {!isLogin && (
               <input
+                value={fullName}
                 class="p-2 rounded-xl border "
                 type="text"
                 name="fullName"
                 placeholder="Full name"
+                onChange={(event) => setFullName(event.target.value)}
               />
             )}
 
             <input
+              value={email}
               class="p-2 rounded-xl border"
               type="email"
               name="email"
               placeholder="Email"
+              onChange={(event) => setEmail(event.target.value)}
             />
             <div class="relative">
               <input
+                value={password}
                 class="p-2 rounded-xl border w-full"
                 type="password"
                 name="password"
                 id="password"
                 placeholder="Password"
+                onChange={(event) => setPassword(event.target.value)}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -136,11 +189,11 @@ function Login() {
           </div>
         </div>
         <div class="md:block hidden w-1/2 ">
-          <img
+          {/* <img
             class="rounded-2xl max-h-[1600px] h-[520px]"
             src={LoginPageVector2}
-            alt="login form image"
-          />
+            alt="login form"
+          /> */}
         </div>
       </div>
     </section>
