@@ -11,6 +11,10 @@ export default function Body() {
       element: <LandingPage />,
     },
     {
+      path: "/login",
+      element: <Login />,
+    },
+    {
       path: "/discover",
       element: <Discover />,
     },
