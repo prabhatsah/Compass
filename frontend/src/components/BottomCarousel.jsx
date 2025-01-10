@@ -9,9 +9,13 @@ import TajMahal from "../assets/TajMahal.jpg";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import ProfilePic from "../assets/UserProfile.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const BottomCarousel = () => {
-  // Sample card data - replace with your actual data
+  const navigate = useNavigate();
+  function openTripComp() {
+    navigate("/trip");
+  }
   const cards = [
     {
       id: 1,
@@ -131,7 +135,10 @@ const BottomCarousel = () => {
                     <h3>{card.userName}</h3>
                   </div>
                   <div>
-                    <button className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700">
+                    <button
+                      className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
+                      onClick={openTripComp}
+                    >
                       Have a look
                     </button>
                   </div>

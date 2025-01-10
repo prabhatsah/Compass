@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Login";
 import Discover from "./Discover";
 import LandingPage from "./LandingPage";
+import Trip from "./TripComponent.jsx";
 
 export default function Body() {
   const appRouter = createBrowserRouter([
@@ -13,6 +14,10 @@ export default function Body() {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/trip",
+      element: <Trip />,
     },
     {
       path: "/discover",

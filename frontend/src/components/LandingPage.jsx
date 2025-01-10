@@ -1,7 +1,8 @@
 import LPBG from "../assets/LoginPageVector.jpg";
-import CompassLogo from "../assets/Compass.png";
+
 import BottomCarousel from "./BottomCarousel";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
 export default function LandingPage() {
   const navigate = useNavigate();
 
@@ -10,9 +11,11 @@ export default function LandingPage() {
   }
   return (
     <>
+      <Header handleLogin={handleLoginButton} />
       <div class="relative w-[70%] mx-auto">
         <div className="h-[75vh]">
-          <div className=" absolute flex justify-between w-full mt-10 ">
+          {/* <Header handleLogin={handleLoginButton} /> */}
+          {/* <div className=" absolute flex justify-between w-full mt-10 ">
             <div className="mt-[-30px] flex items-center">
               <img
                 src={CompassLogo}
@@ -38,7 +41,7 @@ export default function LandingPage() {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col pt-[25vh]">
             <p className="text-2xl text-gray-700">
               Need a&nbsp;
