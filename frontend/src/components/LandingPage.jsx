@@ -100,7 +100,6 @@ export default function LandingPage() {
         </div>
 
         {/* Bottom part */}
-
         <div className="mt-[10vh]">
           <div className="text-center">
             <h2 className="text-[40px] font-bold">Travel buddy in India</h2>

@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { API_END_POINT } from "../utils/contant";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/slices/userSlice";
 
 function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -12,6 +14,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const loginHandler = () => {
     setIsLogin((prevLogin) => !prevLogin);
@@ -32,8 +35,9 @@ function Login() {
         console.log(res);
         if (res.data.success) {
           toast.success(res.data.message);
+          dispatch(login(res.data.user));
+          navigate("/discover");
         }
-        navigate("/discover");
       } catch (error) {
         console.error(error);
         const errorMessage =

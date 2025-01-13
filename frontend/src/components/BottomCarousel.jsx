@@ -7,7 +7,7 @@ import Ladhak from "../assets/Ladhak.webp";
 import Sundarban from "../assets/Sundarban.jpg";
 import TajMahal from "../assets/TajMahal.jpg";
 import { FaLocationDot } from "react-icons/fa6";
-import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaLongArrowAltRight, FaRegCalendarAlt } from "react-icons/fa";
 import ProfilePic from "../assets/UserProfile.jpeg";
 import { useNavigate } from "react-router-dom";
 
@@ -135,12 +135,14 @@ const BottomCarousel = () => {
                     <h3>{card.userName}</h3>
                   </div>
                   <div>
-                    <button
-                      className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
+                    <a
+                      href="#"
                       onClick={openTripComp}
+                      className="hover:opacity-90 px-5 py-2 rounded-md bg-blue-900 text-white flex gap-2"
                     >
-                      Have a look
-                    </button>
+                      <FaLongArrowAltRight className="text-2xl" />
+                     Checkout
+                    </a>
                   </div>
                 </div>
               </div>
