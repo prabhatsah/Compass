@@ -11,38 +11,9 @@ export default function LandingPage() {
   }
   return (
     <>
-      <Header handleLogin={handleLoginButton} />
       <div class="relative w-[70%] mx-auto">
-        <div className="h-[75vh]">
-          {/* <Header handleLogin={handleLoginButton} /> */}
-          {/* <div className=" absolute flex justify-between w-full mt-10 ">
-            <div className="mt-[-30px] flex items-center">
-              <img
-                src={CompassLogo}
-                alt="bgImage"
-                className="w-[100px] h-[100px]"
-              />
-              <span className="text-gray-600 font-bold text-4xl">COMPASS</span>
-            </div>
-            <div className="">
-              <div className="flex gap-8 text-gray-600 items-center ">
-                <a href="#" className=" hover:text-blue-700">
-                  Find buddy
-                </a>
-                <a href="#" className=" hover:text-blue-700">
-                  About us
-                </a>
-                <a
-                  href="#"
-                  onClick={handleLoginButton}
-                  className="bg-red-600 text-white hover:bg-red-700 px-5 py-2 rounded-md"
-                >
-                  Login
-                </a>
-              </div>
-            </div>
-          </div> */}
-          <div className="flex flex-col pt-[25vh]">
+        <div className="h-[60vh] flex ">
+          <div className="flex flex-col justify-center">
             <p className="text-2xl text-gray-700">
               Need a&nbsp;
               <strong className="text-blue-700 text-[50px]">
@@ -56,12 +27,7 @@ export default function LandingPage() {
               </span>
             </p>
 
-            {/* <input
-              placeholder="Enter the place you want to travel "
-              className="w-[400px] border rounded-lg p-3 mt-5"
-            /> */}
-
-            <div class="relative w-[25vw] mt-7">
+            <div class="relative w-full mt-7">
               <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                 <svg
                   class="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -82,19 +48,19 @@ export default function LandingPage() {
               <input
                 type="search"
                 id="default-search"
-                class="block w-[25vw] p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+                class="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
                 placeholder="Search destinations ..."
                 required
               />
               <button
                 type="submit"
-                class="text-white absolute end-3.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 "
+                class="text-white absolute end-3.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-1 "
               >
                 Search
               </button>
             </div>
           </div>
-          <div class="h-[90vh] w-[40vw] absolute right-0 z-[-1] top-20">
+          <div class="h-[50vh] w-[40vw] absolute right-0 z-[-1] ">
             <img src={LPBG} alt="bgImage" className="h-[65vh]" />
           </div>
         </div>

@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
-//import databaseConnection from "./utils/database.js";
+import databaseConnection from "./src/config/database.js";
 import cookieParser from "cookie-parser";
 import userRoute from "./src/routes/userRoute.js";
 import cors from "cors";
 
-//databaseConnection();
+databaseConnection();
 
 dotenv.config({
   path: ".env",

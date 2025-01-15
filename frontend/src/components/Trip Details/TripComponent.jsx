@@ -23,7 +23,7 @@ export default function Trip() {
   };
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div class="w-[70%] mx-auto mt-[10vh] text-gray-700">
         <div className="grid grid-cols-12">
           <div className="col-span-8 me-10">

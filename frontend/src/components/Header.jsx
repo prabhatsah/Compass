@@ -3,12 +3,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiSolidLogInCircle } from "react-icons/bi";
 
-export default function Header({ handleLogin }) {
+export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
   function handleLogoClick() {
     navigate("/");
+  }
+  function handlelogin() {
+    navigate("/Login");
   }
 
   // Handle scroll event
@@ -25,16 +28,10 @@ export default function Header({ handleLogin }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <header
-      className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-[100%] z-50 transition-all duration-300 }`}
-    >
-      <div
-        className={` rounded-md absolute flex justify-between w-full pt-5 px-5 ${
-          isScrolled ? "bg-white" : "bg-transparent"
-        }`}
-      >
+    <header className="w-full sticky top-0 z-[1] pe-5">
+      <div className={`w-full flex items-center justify-between ${isScrolled ? "bg-white" : "bg-transparent"}`}>
         <div
-          className="mt-[-30px] flex items-center cursor-pointer"
+          className=" flex items-center cursor-pointer"
           onClick={() => handleLogoClick()}
         >
           <img src={CompassLogo} alt="bgImage" className="w-[80px] h-[80px]" />
@@ -56,7 +53,7 @@ export default function Header({ handleLogin }) {
             </a>
             <a
               href="#"
-              onClick={handleLogin}
+              onClick={() => handlelogin()}
               className="hover:opacity-90 px-5 py-2 rounded-md bg-red-900 text-white flex gap-2"
             >
               <BiSolidLogInCircle className="text-2xl" />
