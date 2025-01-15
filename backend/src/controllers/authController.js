@@ -1,5 +1,4 @@
 import bcrypt from "bcryptjs";
-//const pool = require('../config/mysqldb');
 import pool from "../config/mysqldb.js";
 
 export const register = async (req, res) => {

@@ -2,12 +2,16 @@ import Header from "../Header";
 import { FaDotCircle } from "react-icons/fa";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { BsBookmarkHeartFill } from "react-icons/bs";
-import GoogleMap from "../../assets/GoogleMap.avif";
-import { MdConnectWithoutContact } from "react-icons/md";
 import TripExtraDetails from "./TripExtraDetails";
 import NameCard from "./NameCard";
+import { FaCarSide } from "react-icons/fa6";
+import GoogleMapComponent from "./GoogleMap";
 
 export default function Trip() {
+  const apiKey = "AIzaSyCDMMvQ_8n2x8jc3jXwxi-dNA_S-SostPs"; //process.env.REACT_APP_GOOGLE_MAPS_API_KEY; // Map API key
+  const source = { lat: 25.5788, lng: 91.8933 }; // Shillong
+  const destination = { lat: 22.5726, lng: 88.3639 }; // Los Angeles
+
   const tripDetails = {
     title: "Meghalay : The Heaven of NorthEast",
     source: "Kolkata, West Bnegal",
@@ -29,13 +33,13 @@ export default function Trip() {
               </h3>
               <div className="flex gap-3">
                 <BsBookmarkHeartFill className="text-4xl" />
-                <a
+                {/* <a
                   href="#"
                   className="hover:opacity-90 px-5 py-2 rounded-md bg-green-900 text-white flex gap-2"
                 >
                   <MdConnectWithoutContact className="text-2xl" />
                   Connect
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="mt-[2vh]">
@@ -60,8 +64,20 @@ export default function Trip() {
             </div>
           </div>
           <div className="col-span-4">
-            <div>
-              <img src={GoogleMap} alt="google-map" />
+            <div className="flex flex-col gap-2">
+              {/* <img src={GoogleMap} alt="google-map" className="rounded-md" /> */}
+              <GoogleMapComponent
+                apiKey={apiKey}
+                source={source}
+                destination={destination}
+              />
+              <a
+                href="#"
+                className="hover:opacity-90 px-5 py-2 rounded-md bg-green-900 text-white flex gap-2 justify-center"
+              >
+                <FaCarSide className="text-2xl" />
+                Request to join
+              </a>
             </div>
           </div>
         </div>

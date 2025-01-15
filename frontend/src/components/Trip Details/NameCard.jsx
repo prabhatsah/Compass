@@ -6,6 +6,7 @@ import { FaSnapchat } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaPhone } from "react-icons/fa6";
+import { FaUserPlus } from "react-icons/fa";
 
 export default function NameCard() {
   return (
@@ -54,16 +55,23 @@ export default function NameCard() {
         </div>
         <div className="flex w-full justify-between border-t-2 mt-5 py-5 pb-0">
           <div className=" flex text-4xl gap-2">
-            <FaFacebook className="text-blue-900"/>
+            <FaFacebook className="text-blue-900" />
             <RiInstagramFill className="text-orange-900" />
-            <FaSnapchat  className="text-yellow-600"/>
+            <FaSnapchat className="text-yellow-600" />
           </div>
-          <div>
+          <div className="flex gap-2">
             <a
               href="#"
-              className="hover:opacity-90 px-5 py-2 rounded-md bg-blue-900 text-white flex gap-2"
+              className="hover:opacity-90 flex items-center justify-center py-1 rounded-md bg-green-900 text-white gap-2 w-[6vw]"
             >
-              <FaLongArrowAltRight className="text-2xl" />
+              <FaUserPlus className="text-lg" />
+              Connect
+            </a>
+            <a
+              href="#"
+              className="hover:opacity-90 flex items-center justify-center py-1 rounded-md bg-blue-900 text-white  gap-2 w-[4.5vw]"
+            >
+              <FaLongArrowAltRight className="text-xl" />
               Visit
             </a>
           </div>
