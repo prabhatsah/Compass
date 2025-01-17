@@ -1,12 +1,12 @@
 // App.js
 import React, { useState } from "react";
-import LoginPageBg from "../assets/LoginPageBg.jpg";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { API_END_POINT } from "../utils/contant";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "../redux/slices/userSlice";
+import { API_END_POINT } from "../../utils/contant.js";
+import { login } from "../../redux/slices/userSlice.js";
+import { FaSearch } from "react-icons/fa";
 
 function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -71,10 +71,7 @@ function Login() {
   };
 
   return (
-    <section
-      className="flex items-center justify-center min-h-screen "
-      style={{ backgroundImage: `url(${LoginPageBg})` }}
-    >
+    <section className="flex items-center justify-center">
       <div class="bg-[#74b4df9f] rounded-2xl flex  p-5 items-center w-[18vw]">
         <div class="px-8 w-full">
           <h2 class="font-bold text-3xl text-[#002D74] mb-5">
@@ -143,11 +140,6 @@ function Login() {
               {isLogin ? "Login" : "Register"}
             </button>
           </form>
-          {/* <div class="mt-6  items-center text-gray-100">
-            <hr class="border-gray-300" />
-            <p class="text-center text-sm">OR</p>
-            <hr class="border-gray-300" />
-          </div> */}
           <div class="mt-10 text-sm border-b border-gray-500 py-5 playfair tooltip">
             Forget password?
           </div>

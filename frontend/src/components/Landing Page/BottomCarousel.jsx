@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import meghalaya from "../assets/Meghalaya.jpg";
-import darjeeling from "../assets/darjeeling.webp";
-import Kedarkanth from "../assets/Kedarkanth.jpg";
-import Ladhak from "../assets/Ladhak.webp";
-import Sundarban from "../assets/Sundarban.jpg";
-import TajMahal from "../assets/TajMahal.jpg";
+import meghalaya from "../../assets/Meghalaya.jpg";
+import darjeeling from "../../assets/darjeeling.webp";
+import Kedarkanth from "../../assets/Kedarkanth.jpg";
+import Ladhak from "../../assets/Ladhak.webp";
+import Sundarban from "../../assets/Sundarban.jpg";
+import TajMahal from "../../assets/TajMahal.jpg";
+import ProfilePic from "../../assets/UserProfile.jpeg";
+import { useNavigate } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaLongArrowAltRight, FaRegCalendarAlt } from "react-icons/fa";
-import ProfilePic from "../assets/UserProfile.jpeg";
-import { useNavigate } from "react-router-dom";
 
 const BottomCarousel = () => {
   const navigate = useNavigate();
@@ -92,7 +92,7 @@ const BottomCarousel = () => {
   };
 
   return (
-    <div className="relative max-full mx-auto px-4 py-8">
+    <div className="relative max-full mx-auto px-4 py-2">
       <div className="flex items-center">
         {/* Previous button */}
         <button
@@ -105,7 +105,10 @@ const BottomCarousel = () => {
         {/* Cards container */}
         <div className="flex gap-6 overflow-hidden mx-12">
           {cards.slice(currentIndex, currentIndex + 3).map((card) => (
-            <div className=" p-5 w-[35vw] border rounded-lg" key={card.id}>
+            <div
+              className=" p-5 w-[35vw] border rounded-lg bg-white shadow"
+              key={card.id}
+            >
               <img
                 src={card.image}
                 alt={card.title}
@@ -141,7 +144,7 @@ const BottomCarousel = () => {
                       className="hover:opacity-90 px-5 py-2 rounded-md bg-blue-900 text-white flex gap-2"
                     >
                       <FaLongArrowAltRight className="text-2xl" />
-                     Checkout
+                      Checkout
                     </a>
                   </div>
                 </div>

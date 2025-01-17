@@ -5,39 +5,17 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Login from "./Login";
+import Login from "./Login/Login2.jsx";
 import Discover from "./Discover";
-import LandingPage from "./LandingPage";
+import LandingPage from "./Landing Page/LandingPage.jsx";
 import Trip from "./Trip Details/TripComponent.jsx";
 import ProfileLandingPage from "./User Profile/ProfileLandingPage.jsx";
 import Header from "./Header.jsx";
 
 export default function Body() {
-  const appRouter = createBrowserRouter([
-    {
-      path: "/",
-      element: <LandingPage />,
-    },
-    {
-      path: "/login",
-      element: <Login />,
-    },
-    {
-      path: "/trip",
-      element: <Trip />,
-    },
-    {
-      path: "/discover",
-      element: <Discover />,
-    },
-    {
-      path: "/profile",
-      element: <ProfileLandingPage />,
-    },
-  ]);
   return (
     <Router>
-      <div>
+      <div className="">
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />

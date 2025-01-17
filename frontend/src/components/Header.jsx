@@ -1,7 +1,7 @@
-import CompassLogo from "../assets/Compass.png";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiSolidLogInCircle } from "react-icons/bi";
+import Logo from "./Meta/Logo.jsx";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,20 +28,17 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <header className="w-full sticky top-0 z-[1] pe-5">
-      <div className={`w-full flex items-center justify-between ${isScrolled ? "bg-white" : "bg-transparent"}`}>
+    <header className="w-full h-[8vh] sticky top-0 z-[1] mb-5">
+      <div
+        className={`h-full border-b-[1px] border-sky-800 w-full flex items-center justify-between px-10 ${
+          isScrolled ? "bg-white" : "bg-white"
+        } mb-5`}
+      >
         <div
           className=" flex items-center cursor-pointer"
           onClick={() => handleLogoClick()}
         >
-          <img src={CompassLogo} alt="bgImage" className="w-[80px] h-[80px]" />
-          <span
-            className={`text-gray-600 font-bold text-2xl ${
-              isScrolled ? "text-gray-600" : "text-gray-600"
-            }`}
-          >
-            COMPASS
-          </span>
+          <Logo />
         </div>
         <div className="">
           <div className={`flex gap-8  items-center text-gray-600`}>
@@ -54,7 +51,7 @@ export default function Header() {
             <a
               href="#"
               onClick={() => handlelogin()}
-              className="hover:opacity-90 px-5 py-2 rounded-md bg-red-900 text-white flex gap-2"
+              className="hover:opacity-90 px-5 py-2 rounded-md bg-sky-900 text-white flex gap-2"
             >
               <BiSolidLogInCircle className="text-2xl" />
               Login

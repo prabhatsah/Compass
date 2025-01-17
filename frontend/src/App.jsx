@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Body from "./components/Body";
 import Header from "./components/Header.jsx";
-import Login from "./components/Login";
+import Login from "./components/Login/Login.jsx";
 import { Toaster } from "react-hot-toast";
 
 function App() {
