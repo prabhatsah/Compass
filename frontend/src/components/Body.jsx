@@ -5,7 +5,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Login from "./Login/Login2.jsx";
+import Login from "./Login/Login.jsx";
 import Discover from "./Discover";
 import LandingPage from "./Landing Page/LandingPage.jsx";
 import Trip from "./Trip Details/TripComponent.jsx";

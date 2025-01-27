@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiSolidLogInCircle } from "react-icons/bi";
+import { BiSolidLogOutCircle } from "react-icons/bi";
 import Logo from "./Meta/Logo.jsx";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../redux/slices/userSlice";
+import toast from "react-hot-toast";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user.user);
+
+  // Handle logout
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+    toast.success("Logged out successfully.");
+  };
 
   function handleLogoClick() {
     navigate("/");
@@ -48,14 +62,25 @@ export default function Header() {
             <a href="#" className=" hover:opacity-90">
               About us
             </a>
-            <a
-              href="#"
-              onClick={() => handlelogin()}
-              className="hover:opacity-90 px-5 py-2 rounded-md bg-sky-900 text-white flex gap-2"
-            >
-              <BiSolidLogInCircle className="text-2xl" />
-              Login
-            </a>
+            {user ? (
+              <a
+                href="#"
+                onClick={() => handleLogout()}
+                className="hover:opacity-90 px-5 py-2 rounded-md bg-red-900 text-white flex gap-2"
+              >
+                <BiSolidLogOutCircle className="text-2xl" />
+                Logout
+              </a>
+            ) : (
+              <a
+                href="#"
+                onClick={() => handlelogin()}
+                className="hover:opacity-90 px-5 py-2 rounded-md bg-sky-900 text-white flex gap-2"
+              >
+                <BiSolidLogInCircle className="text-2xl" />
+                Login
+              </a>
+            )}
           </div>
         </div>
       </div>

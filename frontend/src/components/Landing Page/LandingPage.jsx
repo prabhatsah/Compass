@@ -1,4 +1,4 @@
-import vintageBlue from "../../assets/Meta Assets/VintageBlue.svg";
+import LocateMap from "../../assets/Meta Assets/LocateMap.svg";
 import { useNavigate } from "react-router-dom";
 import Banner from "./Banner.jsx";
 import FeaturedLocationIndia from "./FeaturedLocationIndia.jsx";
@@ -55,7 +55,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div class="">
-            <img src={vintageBlue} alt="bgImage" className="h-[50vh] " />
+            <img src={LocateMap} alt="bgImage" className="h-[50vh] " />
           </div>
         </div>
       </section>
