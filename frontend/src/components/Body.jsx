@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  createBrowserRouter,
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login/Login.jsx";
 import Discover from "./Discover";
 import LandingPage from "./Landing Page/LandingPage.jsx";
 import Trip from "./Trip Details/TripComponent.jsx";
-import ProfileLandingPage from "./User Profile/ProfileLandingPage.jsx";
+import ProfileLandingPage from "./UserProfile/ProfileLandingPage.jsx";
 import Header from "./Header.jsx";
 
 export default function Body() {
