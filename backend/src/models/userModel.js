@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     required: true, 
     unique: true 
   },
-  fullName: { 
+  name: { 
     type: String, 
     required: true, 
     maxlength: 100 
@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
   bio: { 
     type: String 
   },
-  location: { 
+  address: { 
     type: String, 
     maxlength: 100 
   },
@@ -37,6 +37,12 @@ const userSchema = new mongoose.Schema({
     type: Date, 
     default: Date.now 
   },
-}, {timeStamp:true});
+  birthday: { 
+    type: String 
+  },
+  gender: { 
+    type: String 
+  },
+});
 
 export const User = mongoose.model("Users", userSchema, "Users");

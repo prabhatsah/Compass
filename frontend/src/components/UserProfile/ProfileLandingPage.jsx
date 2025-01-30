@@ -2,8 +2,12 @@ import { useState } from "react";
 import BasicDetails from "./BasicDetails";
 import ProfileBody from "./ProfileBody";
 import Tabs from "./Tabs";
+import { useSelector } from "react-redux";
 
 export default function ProfileLandingPage() {
+  const user = useSelector((state) => state.user.user);
+  console.log(user);
+
   const [activeTab, setActiveTab] = useState("Basic Details");
 
   function handleTabClick(event) {
@@ -17,10 +21,10 @@ export default function ProfileLandingPage() {
         <Tabs activeTab={activeTab} handleTabClick={handleTabClick} />
       </div>
       <div className="col-span-7 border-l pl-5">
-        <ProfileBody />
+        <ProfileBody user={user} />
       </div>
       <div className="col-span-3 p-5">
-        <BasicDetails />
+        <BasicDetails user={user} />
       </div>
     </div>
   );
