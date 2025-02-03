@@ -19,7 +19,7 @@ const LoginModal = ({
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-center w-[30vw]">
+    <div className="flex items-center justify-center w-[30vw] ">
       <div className="bg-white rounded-lg p-8 max-w-md w-full">
         <h2 className="text-2xl font-bold mb-6 text-[#245C7C]">Login</h2>
         <form action="" className="space-y-4" onSubmit={handleSubmit}>
@@ -112,7 +112,7 @@ export default function Login() {
 
   return (
     <>
-      <section class="relative mx-auto">
+      <section class="relative mx-auto h-[85vh]">
         <div className="h-[60vh] flex bg-sky-800 mx-10 rounded-2xl items-center justify-around shadow">
           <div className="flex flex-col justify-center">
             <LoginModal

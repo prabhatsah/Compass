@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiSolidLogInCircle } from "react-icons/bi";
 import { BiSolidLogOutCircle } from "react-icons/bi";
@@ -14,13 +14,19 @@ export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isProfileMenuVisible, setProfileMenuVisible] = useState(false);
-
-  // Toggle select visibility
-  const handleImageClick = () => {
-    setProfileMenuVisible(!isProfileMenuVisible);
-  };
+  const menuRef = useRef(null);
 
   const user = useSelector((state) => state.user.user);
+
+  // Toggle select visibility
+  const toggleProfileMenu = () => setProfileMenuVisible(!isProfileMenuVisible);
+
+  // Close menu if clicked outside
+  const handleClickOutside = (e) => {
+    if (menuRef.current && !menuRef.current.contains(e.target)) {
+      setProfileMenuVisible(false);
+    }
+  };
 
   // Handle logout
   const handleLogout = () => {
@@ -37,7 +43,7 @@ export default function Header() {
   }
   function openProfilePage() {
     navigate("/profile");
-    setProfileMenuVisible(!isProfileMenuVisible);
+    //setProfileMenuVisible(!isProfileMenuVisible);
   }
 
   // Handle scroll event
@@ -51,7 +57,15 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // click event listener to close menu when clicked outside
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      // Clean up the event listener on component unmount
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("click", handleClickOutside);
+    };
   }, []);
   return (
     <header className="w-full h-[8vh] sticky top-0 z-[1] mb-5">
@@ -93,14 +107,20 @@ export default function Header() {
                 Login
               </a>
             )}
-            <div className="avatar">
-              <div
-                className="w-12 rounded-full cursor-pointer"
-                onClick={handleImageClick}
-              >
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+
+            {/* user profile icon */}
+            {user && (
+              <div className="avatar">
+                <div
+                  className="w-12 rounded-full cursor-pointer"
+                  onClick={toggleProfileMenu}
+                >
+                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                </div>
               </div>
-            </div>
+            )}
+
+            {/* user profile mwnu */}
             {isProfileMenuVisible && (
               <div className="absolute right-10 top-16">
                 <ul className="menu bg-white rounded-box w-30 shadow-lg border">

@@ -7,20 +7,24 @@ import Trip from "./Trip Details/TripComponent.jsx";
 import ProfileLandingPage from "./UserProfile/ProfileLandingPage.jsx";
 import Header from "./Header.jsx";
 import Register from "./Login/Register.jsx";
+import Footer from "./Footer.jsx";
 
 export default function Body() {
   return (
     <Router>
-      <div className="">
+      <div className="body-container">
         <Header />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/trip" element={<Trip />} />
-          <Route path="/discover" element={<Discover />} />
-          <Route path="/profile" element={<ProfileLandingPage />} />
-        </Routes>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/trip" element={<Trip />} />
+            <Route path="/discover" element={<Discover />} />
+            <Route path="/profile" element={<ProfileLandingPage />} />
+          </Routes>
+        </div>
+        <Footer /> {/* Footer added here */}
       </div>
     </Router>
   );
