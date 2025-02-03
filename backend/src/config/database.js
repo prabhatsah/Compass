@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-console.log("MongoDB URI:", process.env.MONGO_URI);
-
 const databaseConnection = () => {
   mongoose
     .connect(process.env.USERS_MONGO_URI)

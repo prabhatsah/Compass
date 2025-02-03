@@ -6,11 +6,19 @@ import Logo from "./Meta/Logo.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/slices/userSlice";
 import toast from "react-hot-toast";
+import { FaUser } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isProfileMenuVisible, setProfileMenuVisible] = useState(false);
+
+  // Toggle select visibility
+  const handleImageClick = () => {
+    setProfileMenuVisible(!isProfileMenuVisible);
+  };
 
   const user = useSelector((state) => state.user.user);
 
@@ -26,6 +34,10 @@ export default function Header() {
   }
   function handlelogin() {
     navigate("/Login");
+  }
+  function openProfilePage() {
+    navigate("/profile");
+    setProfileMenuVisible(!isProfileMenuVisible);
   }
 
   // Handle scroll event
@@ -80,6 +92,35 @@ export default function Header() {
                 <BiSolidLogInCircle className="text-2xl" />
                 Login
               </a>
+            )}
+            <div className="avatar">
+              <div
+                className="w-12 rounded-full cursor-pointer"
+                onClick={handleImageClick}
+              >
+                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+              </div>
+            </div>
+            {isProfileMenuVisible && (
+              <div className="absolute right-10 top-16">
+                <ul className="menu bg-white rounded-box w-30 shadow-lg border">
+                  <li
+                    className="cursor-pointer hover:opacity-75 hover:bg-gray-100"
+                    onClick={openProfilePage}
+                  >
+                    <a>
+                      <FaUser />
+                      Profile
+                    </a>
+                  </li>
+                  <li className="cursor-pointer hover:opacity-75 hover:bg-gray-100">
+                    <a>
+                      <FaGear />
+                      Settings
+                    </a>
+                  </li>
+                </ul>
+              </div>
             )}
           </div>
         </div>

@@ -45,7 +45,7 @@ const LoginModal = ({
           </div>
           <button
             type="submit"
-            className="w-full bg-[#245C7C] text-white py-2 rounded-lg hover:bg-opacity-90 transition duration-300"
+            className="w-full !bg-sky-900 text-white py-2 rounded-lg hover:bg-opacity-90 transition duration-300"
           >
             Login
           </button>

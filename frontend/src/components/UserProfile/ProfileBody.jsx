@@ -19,6 +19,8 @@ export default function ProfileBody({ user }) {
   const [currentField, setCurrentField] = useState(null);
   const [editedValue, setEditedValue] = useState("");
 
+  const [selectedDate, setSelectedDate] = useState(new Date("1800-01-01"));
+
   // Open modal and set field to edit
   const handleEditModal = (field, value) => {
     setCurrentField(field);
@@ -122,7 +124,13 @@ export default function ProfileBody({ user }) {
         </div>
         <div className="grid grid-cols-12 flex items-center mt-4">
           <span className="col-span-3">Birthday</span>
-          <span className="col-span-8">{personalInfo.birthday}</span>
+          <span className="col-span-8">
+            {/* <Datepicker
+              // className="w-[50%]"
+              value={selectedDate}
+              onSelectedDateChanged={(date) => setSelectedDate(date)}
+            /> */}
+          </span>
           <span className="col-span-1">
             <FaEdit
               className="text-sky-900 cursor-pointer"

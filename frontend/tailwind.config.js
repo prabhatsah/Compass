@@ -12,5 +12,8 @@ module.exports = {
                        rgba(34, 60, 80, 0.7)`,
   },},
   },
-  plugins: [require('@tailwindcss/line-clamp')],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('daisyui'),
+  ],
 }

@@ -4,7 +4,7 @@
 
 @layer components {
   .tab {
-    @apply text-sky-900 px-5 py-3 rounded-xl flex items-center gap-3 w-[9vw] cursor-pointer hover:bg-sky-900 hover:bg-opacity-5;
+    @apply text-sky-900 px-5 py-3 rounded-xl flex items-center gap-3 w-[9vw] cursor-pointer hover:bg-sky-900 hover:bg-opacity-5 h-full;
   }
 
   .tab.active{

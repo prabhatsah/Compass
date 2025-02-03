@@ -39,7 +39,7 @@ export default function LandingPage() {
                 <input
                   type="text"
                   placeholder="Search destinations or activities..."
-                  className="w-full px-4 py-2 outline-none text-gray-700"
+                  className="w-full px-4 py-2 outline-none text-gray-700 border-none bg-white"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />

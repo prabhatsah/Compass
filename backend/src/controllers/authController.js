@@ -1,8 +1,11 @@
 import jwt from "jsonwebtoken";
 import { User } from "../models/userModel.js";
 import bcryptjs from "bcryptjs";
+import dotenv from "dotenv";
 
 export const Login = async (req, res) => {
+  dotenv.config();
+
     try {
       const { email, password } = req.body;
       if (!email || !password) {
@@ -29,7 +32,7 @@ export const Login = async (req, res) => {
       }
   
       // Create JWT token with user id
-      const token = jwt.sign({ id: user.id }, "fghjoopwertyuikjhgfdsx", {
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET , {
         expiresIn: "1d",// Token expiration
       });
 
@@ -37,13 +40,19 @@ export const Login = async (req, res) => {
     const { password: _, ...userData } = user.toObject(); 
   
       return res
-        .status(200)
-        .cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict' }) // 'secure' flag for HTTPS in production
-        .json({
-          message: `Welcome back ${user.name}`,
-          success: true,
-          user: userData,
-        });
+      .status(200)
+      .cookie("token", token, { 
+        httpOnly: true, 
+        secure: process.env.NODE_ENV === "production", 
+        sameSite: "Strict",
+        path: "/", // Make cookie accessible across all routes
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+      })
+      .json({
+        message: `Welcome back ${user.name}`,
+        success: true,
+        user: userData,
+      });
     } catch (error) {
       console.error(error);
       return res.status(500).json({
@@ -53,15 +62,15 @@ export const Login = async (req, res) => {
     }
   };
 
-  export const Logout = async (req, res) => {
+  export const Logout = (req, res) => {
     return res
       .status(200)
-      .cookie("token", "", { expiresIn: new Date(Date.now()), httponly: true })
-      .json({
-        message: "User Logged out successfully",
-        success: true,
-      });
+      .clearCookie("token", { path: "/", httpOnly: true, sameSite: "Strict" })
+      .json({ message: "User logged out successfully", success: true });
   };
+  
+
+  
 
   export const Register = async (req, res) => {
     try {
