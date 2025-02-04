@@ -18,7 +18,7 @@ export const Login = async (req, res) => {
       const user = await User.findOne({ email });
       if (!user) {
         return res.status(401).json({
-          message: "Invalid email or password",
+          message: "Account doesn't exist",
           success: false,
         });
       }
@@ -33,7 +33,7 @@ export const Login = async (req, res) => {
   
       // Create JWT token with user id
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET , {
-        expiresIn: "1d",// Token expiration
+        expiresIn: "5m",// Token expiration
       });
 
       // Convert user to object and exclude password
@@ -69,9 +69,6 @@ export const Login = async (req, res) => {
       .json({ message: "User logged out successfully", success: true });
   };
   
-
-  
-
   export const Register = async (req, res) => {
     try {
       const { name, email, password, gender, profile_image } = req.body;

@@ -23,7 +23,11 @@ export default function Header() {
 
   // Close menu if clicked outside
   const handleClickOutside = (e) => {
-    if (menuRef.current && !menuRef.current.contains(e.target)) {
+    if (
+      e.target.id !== "user-avatar" &&
+      menuRef.current &&
+      !menuRef.current.contains(e.target)
+    ) {
       setProfileMenuVisible(false);
     }
   };
@@ -31,8 +35,8 @@ export default function Header() {
   // Handle logout
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/");
     toast.success("Logged out successfully.");
+    setTimeout(() => navigate("/"), 200);
   };
 
   function handleLogoClick() {
@@ -43,7 +47,7 @@ export default function Header() {
   }
   function openProfilePage() {
     navigate("/profile");
-    //setProfileMenuVisible(!isProfileMenuVisible);
+    setProfileMenuVisible(!isProfileMenuVisible);
   }
 
   // Handle scroll event
@@ -115,14 +119,17 @@ export default function Header() {
                   className="w-12 rounded-full cursor-pointer"
                   onClick={toggleProfileMenu}
                 >
-                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    id="user-avatar"
+                  />
                 </div>
               </div>
             )}
 
             {/* user profile mwnu */}
             {isProfileMenuVisible && (
-              <div className="absolute right-10 top-16">
+              <div className="absolute right-10 top-16" ref={menuRef}>
                 <ul className="menu bg-white rounded-box w-30 shadow-lg border">
                   <li
                     className="cursor-pointer hover:opacity-75 hover:bg-gray-100"

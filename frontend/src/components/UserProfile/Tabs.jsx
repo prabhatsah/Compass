@@ -15,17 +15,30 @@ export default function Tabs({ activeTab, handleTabClick }) {
   ];
 
   return (
-    <div className="flex flex-col items-center gap-3 group">
+    // <div className=" ">
+    //   {tabList.map((tab, index) => (
+    //     <div
+    //       key={index}
+    //       className={`tab ${activeTab === tab.name ? "active" : ""} grid grid-cols-6 gap-4`}
+    //       onClick={handleTabClick}
+    //     >
+    //       <span className="col-start-1 col-end-2 ...">{tab.icon}</span>
+    //       <span className="col-span-4 col-end-7 ...">{tab.name}</span>
+    //     </div>
+    //   ))}
+    // </div>
+
+    <ul className="w-[90%] mx-auto ">
       {tabList.map((tab, index) => (
-        <div
+        <li
           key={index}
-          className={`tab ${activeTab === tab.name ? "active" : ""}`}
           onClick={handleTabClick}
+          className={`tab1 ${activeTab === tab.name ? "active" : ""} `}
         >
-          {tab.icon}
-          <span>{tab.name}</span>
-        </div>
+          <span>{tab.icon}</span>
+          <a>{tab.name}</a>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

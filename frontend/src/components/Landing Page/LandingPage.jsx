@@ -2,7 +2,6 @@ import LocateMap from "../../assets/Meta Assets/LocateMap.svg";
 import { useNavigate } from "react-router-dom";
 import Banner from "./Banner.jsx";
 import FeaturedLocationIndia from "./FeaturedLocationIndia.jsx";
-import Footer from "./Footer.jsx";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import Testimony from "./Testimony.jsx";
@@ -68,9 +67,6 @@ export default function LandingPage() {
 
       {/* Testimony */}
       <Testimony />
-
-      {/* Footer part */}
-      <Footer />
     </>
   );
 }

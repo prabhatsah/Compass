@@ -1,10 +1,12 @@
 import profilePic from "../../assets/UserProfile.jpeg";
 
-export default function BasicDetails(user) {
+export default function BasicDetails({ user }) {
+  if (!user) return null;
+
   return (
     <div className="h-full bg-blue-50 rounded-2xl flex flex-col items-center pt-[5vh] gap-5">
       <img
-        src={profilePic}
+        src={user.profile_image}
         alt="profile-pic"
         className="rounded-full h-[20vh]"
       />

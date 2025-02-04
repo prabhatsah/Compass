@@ -7,6 +7,7 @@ import { login } from "../../redux/slices/userSlice";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import "../../Global.css";
 
 // Login Modal
 const LoginModal = ({
@@ -23,22 +24,20 @@ const LoginModal = ({
       <div className="bg-white rounded-lg p-8 max-w-md w-full">
         <h2 className="text-2xl font-bold mb-6 text-[#245C7C]">Login</h2>
         <form action="" className="space-y-4" onSubmit={handleSubmit}>
-          <div className="relative">
-            <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
+          <div className="input-with-icon">
+            <FaEnvelope />
             <input
               type="email"
               placeholder="Email"
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:border-[#245C7C]"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
           </div>
-          <div className="relative">
+          <div className="input-with-icon">
             <FaLock className="absolute left-3 top-3 text-gray-400" />
             <input
               type="password"
               placeholder="Password"
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:border-[#245C7C]"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
@@ -112,7 +111,7 @@ export default function Login() {
 
   return (
     <>
-      <section class="relative mx-auto h-[85vh]">
+      <section class="relative mx-auto h-">
         <div className="h-[60vh] flex bg-sky-800 mx-10 rounded-2xl items-center justify-around shadow">
           <div className="flex flex-col justify-center">
             <LoginModal

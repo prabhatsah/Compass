@@ -54,11 +54,11 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+          {/* <div className="border-t border-gray-700 mt-8 pt-8 text-center">
             <p className="text-gray-400">
               &copy; 2024 Compass. All rights reserved.
             </p>
-          </div>
+          </div> */}
         </div>
       </footer>
     </>

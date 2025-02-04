@@ -11,6 +11,7 @@ import { useState } from "react";
 import axios from "axios";
 import { API_END_POINT } from "../../utils/contant";
 import toast from "react-hot-toast";
+import EditModal from "./EditModal";
 
 export default function ProfileBody({ user }) {
   const [personalInfo, setPersonalInfo] = useState(user);
@@ -23,8 +24,8 @@ export default function ProfileBody({ user }) {
 
   // Open modal and set field to edit
   const handleEditModal = (field, value) => {
-    setCurrentField(field);
-    setEditedValue(value);
+    // setCurrentField(field);
+    // setEditedValue(value);
     setIsModalOpen(true);
   };
 
@@ -89,63 +90,36 @@ export default function ProfileBody({ user }) {
 
       {/* personal info */}
       <div className="border rounded-md p-2 mt-5">
-        <h2 className="font-bold text-md">Personal Information</h2>
-        {/* {Object.entries(personalInfo).map(([key, value]) => (
-          <div className="grid grid-cols-12 flex items-center mt-4">
-            <span className="col-span-3">{key}</span>
-            <span className="col-span-8">{value}</span>
-            <span className="col-span-1">
-              <FaEdit
-                className="text-sky-900 cursor-pointer"
-                onClick={() => handleEditModal(key, value)}
-              />
-            </span>
-          </div>
-        ))} */}
+        <div className="flex items-center justify-between">
+          <h2 className="font-bold text-md">Personal Information</h2>
+          <FaEdit
+            className="text-sky-900 cursor-pointer"
+            onClick={() => handleEditModal()}
+          />
+        </div>
+
         <div className="grid grid-cols-12 flex items-center mt-4">
           <span className="col-span-3">Name</span>
           <span className="col-span-8">{personalInfo.name}</span>
-          <span className="col-span-1">
-            <FaEdit
-              className="text-sky-900 cursor-pointer"
-              onClick={() => handleEditModal("name", personalInfo.name)}
-            />
-          </span>
+        </div>
+        <div className="grid grid-cols-12 flex items-center mt-4">
+          <span className="col-span-3">Email</span>
+          <span className="col-span-8">{personalInfo.email}</span>
         </div>
         <div className="grid grid-cols-12 flex items-center mt-4">
           <span className="col-span-3">Gender</span>
           <span className="col-span-8">{personalInfo.gender}</span>
-          <span className="col-span-1">
-            <FaEdit
-              className="text-sky-900 cursor-pointer"
-              onClick={() => handleEditModal("gender", personalInfo.gender)}
-            />
-          </span>
         </div>
         <div className="grid grid-cols-12 flex items-center mt-4">
           <span className="col-span-3">Birthday</span>
           <span className="col-span-8">
-            {/* <Datepicker
-              // className="w-[50%]"
-              value={selectedDate}
-              onSelectedDateChanged={(date) => setSelectedDate(date)}
-            /> */}
-          </span>
-          <span className="col-span-1">
-            <FaEdit
-              className="text-sky-900 cursor-pointer"
-              onClick={() => handleEditModal("Birthday", personalInfo.birthday)}
-            />
+            {personalInfo.birthday ? personalInfo.birthday : "YYYY-MMM-DD"}
           </span>
         </div>
         <div className="grid grid-cols-12 flex items-center mt-4">
           <span className="col-span-3">Address</span>
-          <span className="col-span-8">{personalInfo.address}</span>
-          <span className="col-span-1">
-            <FaEdit
-              className="text-sky-900 cursor-pointer"
-              onClick={() => handleEditModal("Address", personalInfo.address)}
-            />
+          <span className="col-span-8">
+            {personalInfo.address ? personalInfo.address : "Your location"}
           </span>
         </div>
         <div className="grid grid-cols-12 flex items-center mt-4">
@@ -191,31 +165,12 @@ export default function ProfileBody({ user }) {
 
       {/* Edit Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 className="text-lg font-semibold mb-4">Edit {currentField}</h2>
-            <input
-              type="text"
-              value={editedValue}
-              onChange={(e) => setEditedValue(e.target.value)}
-              className="w-full border p-2 rounded"
-            />
-            <div className="mt-4 flex justify-end">
-              <button
-                className="bg-gray-500 text-white px-4 py-2 rounded mr-2"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Cancel
-              </button>
-              <button
-                className="bg-blue-500 text-white px-4 py-2 rounded"
-                onClick={handleSave}
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
+        <EditModal
+          handleSave={handleSave}
+          setEditedValue={setEditedValue}
+          setIsModalOpen={setIsModalOpen}
+          user={user}
+        />
       )}
     </section>
   );

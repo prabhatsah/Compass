@@ -25,18 +25,18 @@ html {
 
 /* Content area that grows to fill space */
 .content {
-  flex: 1; /* This ensures content area takes remaining space */
-  padding-bottom: 60px; /* Add some space at the bottom to avoid overlap */
+  flex: 1; 
+  /* padding-bottom: 60px;  */
 }
 
 /* Footer Style */
-footer {
+.common-footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #333;
+  background-color: #1f2937;
   color: white;
-  text-align: center;
-  padding: 10px 0;
+  padding: 10px;
+  font-size: 12px;
 }
